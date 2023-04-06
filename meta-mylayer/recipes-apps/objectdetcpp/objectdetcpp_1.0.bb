@@ -19,15 +19,5 @@ S = "${WORKDIR}"
 inherit cmake
 
 
-do_install () {
-    install -d 0755 "${D}${bindir}"
-    install -m 0755 objectdetcpp "${D}${bindir}"
-    install -d 0755 "${D}${sysconfdir}"
-    
-    install -m 0755 ../object_detection_classes_coco.txt ${D}${sysconfdir}/object_detection_classes_coco.txt
-    install -m 0755 ../ssd_mobilenet_v2_coco_2018_03_29.pbtxt ${D}${sysconfdir}/ssd_mobilenet_v2_coco_2018_03_29.pbtxt
-    install -m 0755 ../frozen_inference_graph.pb ${D}${sysconfdir}/frozen_inference_graph.pb
-    install -m 0755 ../Street.mp4 ${D}${sysconfdir}/Street.mp4
-}
 
 FILES_${PN} = "${bindir}"
