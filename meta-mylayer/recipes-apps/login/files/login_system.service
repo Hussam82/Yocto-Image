@@ -1,0 +1,11 @@
+[Unit]
+Description=My Qt5 App
+After=network.target
+
+[Service]
+User=root
+Environment="DISPLAY=:0"
+ExecStart=/etc/login_system_start.sh
+
+[Install]
+WantedBy=multi-user.target
