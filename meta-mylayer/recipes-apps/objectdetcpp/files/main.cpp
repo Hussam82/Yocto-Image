@@ -137,7 +137,7 @@ int main(int argc, char** argv)
         imshow("image", image);
 
         int k = waitKey(1);
-        if (k == 113)
+        if (k == 'q')
         {
             break;
         }
