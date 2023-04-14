@@ -38,3 +38,5 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 install(TARGETS ${PROJECT_NAME} DESTINATION "/usr/bin/")
 install(FILES login_system.service DESTINATION "/etc/systemd/system/")
 install(FILES login_system_start.sh DESTINATION "/etc/")
+install(FILES qtappenv DESTINATION "/etc/")
+

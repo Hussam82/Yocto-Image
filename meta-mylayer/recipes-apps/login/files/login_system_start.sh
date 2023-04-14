@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sleep 4
+systemctl start weston.service
 login_system
 exit 0

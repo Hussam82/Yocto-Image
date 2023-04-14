@@ -17,16 +17,17 @@ SRC_URI = "file://main.cpp \
            file://widget.h \
            file://CMakeLists.txt \
 	   file://login_system_start.sh \
+	   file://qtappenv \
            file://login_system.service "
 
 #file://widget.h
-DEPENDS += "qtbase"
+DEPENDS += "qtbase weston"
 # NOTE: unable to map the following CMake package dependencies: Qt QT
 inherit cmake
 inherit cmake_qt5
+inherit systemd
 
-
-SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_${PN} = "login_system.service"
+SYSTEMD_SERVICE:${PN} = "login_system.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 

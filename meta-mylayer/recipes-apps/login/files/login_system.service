@@ -1,11 +1,14 @@
 [Unit]
 Description=My Qt5 App
-After=network.target
+After=multi-user.target local-fs.target weston.service
 
 [Service]
 User=root
-Environment="DISPLAY=:0"
+Restart=no
+Type=simple
+EnvironmentFile=/etc/qtappenv
 ExecStart=/etc/login_system_start.sh
+StandardOutput=console
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target weston.service
