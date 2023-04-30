@@ -11,22 +11,19 @@
 # recipe for anything other than initial testing/development!
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
-S="${WORKDIR}" 
-SRC_URI = "file://main.cpp \
-           file://widget.cpp \
-           file://widget.h \
-           file://CMakeLists.txt \
-	   file://qtappenv \
-           file://login_system.service "
+SRCREV = "2f793dc3a29bda65a5a0cccac7768ded51b6262e"
+SRC_URI = "git://github.com/Hussam82/QtGui;protocol=https;branch=main"
+SRC_URI[sha256sum] = "2f7e5cbcc90c5626c2bc82a203232a81ec438d2492e9f0a8d17f0297f2b17109"
 
-#file://widget.h
+S="${WORKDIR}/git" 
+
 DEPENDS += "qtbase weston"
 # NOTE: unable to map the following CMake package dependencies: Qt QT
 inherit cmake
 inherit cmake_qt5
 inherit systemd
 
-SYSTEMD_SERVICE:${PN} = "login_system.service"
-SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+SYSTEMD_SERVICE_${PN} = "qtapp.service"
+SYSTEMD_AUTO_ENABLE = "enable"
 
 

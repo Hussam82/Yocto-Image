@@ -34,16 +34,16 @@ IMAGE_INSTALL += "nano git"
 
 
 #Add our apps
-IMAGE_INSTALL += "login"
+IMAGE_INSTALL += "qtapp"
 IMAGE_INSTALL += "lanedetection"
 IMAGE_INSTALL += "objectdetcpp"
-IMAGE_INSTALL += "cinematicexperience"
+#IMAGE_INSTALL += "cinematicexperience"
 
 #Qt5
 IMAGE_INSTALL += "qtbase-tools qtbase qtdeclarative qtimageformats qtmultimedia qtquickcontrols2 qtquickcontrols qtbase-plugins liberation-fonts qtwayland"
 
 # Add support for qt5 keyboard
-IMAGE_INSTALL += "qtvirtualkeyboard"
+#IMAGE_INSTALL += "qtvirtualkeyboard"
 #IMAGE_INSTALL += "maliit-framework-qt5"
 
 
