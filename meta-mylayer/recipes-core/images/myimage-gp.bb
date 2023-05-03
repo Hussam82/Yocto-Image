@@ -79,7 +79,7 @@ IMAGE_INSTALL += "networkmanager networkmanager-bash-completion networkmanager-n
 #Add kernel modules
 IMAGE_INSTALL += "kernel-modules"
 IMAGE_INSTALL += "mymod"
-KERNEL_MODULE_AUTOLOAD += " test_driver"
+IMAGE_INSTALL += "dht11km"
 
 # Remove old builds
 RM_OLD_IMAGE = "1"

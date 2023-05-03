@@ -6,12 +6,12 @@ type=wifi
 [wifi]
 mac-address-blacklist=
 mode=infrastructure
-ssid=maJOrr
+ssid=maJOrrXD
 
 [wifi-security]
 auth-alg=open
 key-mgmt=wpa-psk
-psk=Fuckyoublyat
+psk=Fuck3you9blyat00
 
 [ipv4]
 dns-search=

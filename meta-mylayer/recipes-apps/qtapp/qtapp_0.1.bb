@@ -11,7 +11,7 @@
 # recipe for anything other than initial testing/development!
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
-SRCREV = "2f793dc3a29bda65a5a0cccac7768ded51b6262e"
+SRCREV = "b8c651277d77c1ce4490b6c83f94f83757d12e42"
 SRC_URI = "git://github.com/Hussam82/QtGui;protocol=https;branch=main"
 SRC_URI[sha256sum] = "2f7e5cbcc90c5626c2bc82a203232a81ec438d2492e9f0a8d17f0297f2b17109"
 
@@ -23,7 +23,7 @@ inherit cmake
 inherit cmake_qt5
 inherit systemd
 
-SYSTEMD_SERVICE_${PN} = "qtapp.service"
+SYSTEMD_SERVICE:${PN} = "qtapp.service"
 SYSTEMD_AUTO_ENABLE = "enable"
 
 
