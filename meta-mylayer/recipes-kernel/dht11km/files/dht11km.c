@@ -12,13 +12,14 @@
 #include <linux/types.h>
 #include <linux/delay.h>
 #include <linux/device.h>
+#include <linux/init.h>
 #include <asm/uaccess.h>
 
 typedef unsigned char u8;
 typedef unsigned short u16;
 
 static int dht11_major = 0;
-static int dht11_gpio;
+static int dht11_gpio = 4;
 static struct class *dht11_class;//类
 static struct device *dht11_dev;//设备
 static const char* dht11_name = "dht11km";
@@ -129,9 +130,10 @@ static u8 DHT11_Read_Data(u16 *temp,u16 *humi)
 		}
 		if((buf[0]+buf[1]+buf[2]+buf[3])==buf[4])
 		{
-			*humi=buf[0]<<8|buf[1];
-			*temp=buf[2]<<8|buf[3];
-			printk("buf=%d,%d,%d,%d,%d\n",buf[0],buf[1],buf[2],buf[3],buf[4]);
+			//*humi=buf[0]<<8|buf[1];
+			//*temp=buf[2]<<8|buf[3];
+			//printk("buf=%d,%d,%d,%d,%d\n",buf[0],buf[1],buf[2],buf[3],buf[4]);
+			printk("Temperature: %u.%u degrees Celsius, Humidity: %u%%\n", buf[2], buf[3], buf[0]);
 		}
 	}else return 1;
 	return 0;    
@@ -156,8 +158,9 @@ static ssize_t DHT11_read(struct file *file, char __user *buf, size_t nbytes, lo
 	printk("--------------%s--------------\n",__FUNCTION__);
 	
 	dht11_data Last_dht11_data;
-	if(DHT11_Read_Data(&Last_dht11_data.temp,&Last_dht11_data.hum) == 0);
+	if(DHT11_Read_Data(&Last_dht11_data.temp,&Last_dht11_data.hum) == 0)
 	{
+		copy_to_user(buf,&Last_dht11_data,sizeof(Last_dht11_data));
 		if ( copy_to_user(buf,&Last_dht11_data,sizeof(Last_dht11_data)) )
 		{
 			return EFAULT ;
@@ -188,21 +191,19 @@ MODULE_DEVICE_TABLE(of, of_dht11_match);
 
 
 
-static int dht11_probe(struct platform_device *pdev)
+static int __init dht11_init(void)
 {
 	int ret;  
 	enum of_gpio_flags flag;//(flag == OF_GPIO_ACTIVE_LOW) ?
 
 	printk("-------%s-------------\n", __FUNCTION__);
 	
-    struct device_node *dht11_gpio_node = pdev->dev.of_node; 
-	
-	dht11_gpio = of_get_named_gpio_flags(dht11_gpio_node->child, "gpios", 0, &flag); 
 
 	if (!gpio_is_valid(dht11_gpio)) 
 	{
     	printk("dht11-gpio: %d is invalid\n", dht11_gpio); 
 		return -ENODEV;
+        goto err_0;
     }
 	else
 		printk("dht11-gpio: %d is valid!\n", dht11_gpio);
@@ -211,6 +212,7 @@ static int dht11_probe(struct platform_device *pdev)
         printk("gpio %d request failed!\n", dht11_gpio); 
         gpio_free(dht11_gpio); 
         return -ENODEV;
+        goto err_0;
     }
 	else
 		printk("gpio %d request success!\n", dht11_gpio); 
@@ -255,32 +257,19 @@ err_0:
 		return -1;
 }
 
-static int dht11_remove(struct platform_device *pdev)
+static void __exit dht11_exit(void)
 {
 	printk("-------%s-------------\n", __FUNCTION__);
 	device_destroy(dht11_class,MKDEV(dht11_major,0));
 	class_destroy(dht11_class);
 	unregister_chrdev(dht11_major,dht11_name);
-	return 0;
 }
 
-static void dht11_shutdown(struct platform_device *pdev)
-{
-	printk("-------%s-------------\n", __FUNCTION__);
-}
 
-static struct platform_driver dht11_driver = {
-	.probe		= dht11_probe,
-	.remove		= dht11_remove,
-	.shutdown	= dht11_shutdown,
-	.driver		= {
-		.name	= "dht11_driver",
-		.of_match_table = of_dht11_match,
-	},
-};
 
-module_platform_driver(dht11_driver);
 
+module_init(dht11_init);
+module_exit(dht11_exit);
 MODULE_AUTHOR("jackeyt,bbs.elecfans.com");
 MODULE_DESCRIPTION("DHT11 Sensor driver");
 MODULE_LICENSE("GPL");
