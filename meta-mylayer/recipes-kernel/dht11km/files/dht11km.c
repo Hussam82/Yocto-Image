@@ -130,9 +130,10 @@ static u8 DHT11_Read_Data(u16 *temp,u16 *humi)
 		}
 		if((buf[0]+buf[1]+buf[2]+buf[3])==buf[4])
 		{
-			//*humi=buf[0]<<8|buf[1];
-			//*temp=buf[2]<<8|buf[3];
+			*humi=buf[0];
+			*temp=buf[2];
 			//printk("buf=%d,%d,%d,%d,%d\n",buf[0],buf[1],buf[2],buf[3],buf[4]);
+
 			printk("Temperature: %u.%u degrees Celsius, Humidity: %u%%\n", buf[2], buf[3], buf[0]);
 		}
 	}else return 1;
@@ -155,18 +156,37 @@ int DHT11_open(struct inode *inode, struct file *flips)
 
 static ssize_t DHT11_read(struct file *file, char __user *buf, size_t nbytes, loff_t *ppos)
 {	
+    	char str_temp[16], str_hum[16];
+    	char data_str[35];
 	printk("--------------%s--------------\n",__FUNCTION__);
 	
 	dht11_data Last_dht11_data;
 	if(DHT11_Read_Data(&Last_dht11_data.temp,&Last_dht11_data.hum) == 0)
 	{
-		copy_to_user(buf,&Last_dht11_data,sizeof(Last_dht11_data));
-		if ( copy_to_user(buf,&Last_dht11_data,sizeof(Last_dht11_data)) )
+	
+		sprintf(str_temp, "%d", Last_dht11_data.temp);
+    		sprintf(str_hum, "%d", Last_dht11_data.hum);
+    		snprintf(data_str, sizeof(data_str), "Temperature: %s°C, Humidity: %s%%\n", str_temp, str_hum);
+    		
+		/* we need to check if the user wants more that the size or not */
+    		/* This if condition guarantees that the count never exceeds the size of the buffer */
+    		if (nbytes + (*ppos) > 35)
+    		{
+    		    nbytes = 35 - (*ppos);
+    		}
+    		
+		if ( copy_to_user(buf, data_str, strlen(data_str) + 1) )
 		{
 			return EFAULT ;
 		}
+		*ppos = nbytes; 
+		return nbytes;
 	}
-	return 0;
+	else
+	{
+		return 0;
+	}
+	
 }
 
 static int DHT11_close(struct inode *inode, struct file *flip)
