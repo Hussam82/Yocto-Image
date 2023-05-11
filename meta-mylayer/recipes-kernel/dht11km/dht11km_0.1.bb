@@ -11,7 +11,7 @@ SRC_URI = "file://Makefile \
 
 S = "${WORKDIR}"
 
-#KERNEL_MODULE_AUTOLOAD += "dht11km"
+KERNEL_MODULE_AUTOLOAD += "dht11km"
 
 
 # The inherit of module.bbclass will automatically name module packages with
