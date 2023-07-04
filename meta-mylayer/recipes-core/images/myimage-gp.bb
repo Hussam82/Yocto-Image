@@ -23,7 +23,7 @@ IMAGE_INSTALL += "python3 python3-pip python3-modules"
 
 #Add cmake
 #IMAGE_INSTALL += "cmake"
-#IMAGE_INSTALL += "openssl"
+IMAGE_INSTALL += "openssl"
 
 #Add RPi.GPIO python library
 IMAGE_INSTALL += "rpi-gpio"
@@ -58,8 +58,8 @@ IMAGE_INSTALL += "userland"
 IMAGE_INSTALL += "weston weston-init"
 #IMAGE_FEATURES += "x11-base"
 
-#Add PyTorch and SciPy
-IMAGE_INSTALL += "pip-torch-vision pip-torch python3-scipy"
+#Add Yolov5
+IMAGE_INSTALL += "pip-yolov5"
 
 #Add Tensor Flow Lite
 IMAGE_INSTALL += "python3-tensorflow-lite libtensorflow-lite"
