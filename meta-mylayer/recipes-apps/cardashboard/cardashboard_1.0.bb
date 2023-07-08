@@ -1,7 +1,7 @@
 SUMMARY = "A recipe for The Qt GUI Application"
 LICENSE = "CLOSED"
 FILESEXTRAPATHS:prepend := "${THISDIR}/systemd:"
-RDEPENDS:${PN}:append = " qtbase-tools qtbase qtdeclarative qtimageformats qtmultimedia qtquickcontrols2 qtquickcontrols qtbase-plugins liberation-fonts qtwayland"
+RDEPENDS:${PN}:append = " qtbase-tools qtbase qtdeclarative qtimageformats qtmultimedia qtquickcontrols2 qtquickcontrols qtbase-plugins liberation-fonts qtwayland openssl"
 DEPENDS:append = " qtbase"
 SRC_URI:append = " file://CarDashboard.service \
                    file://CarDashboard.env"
