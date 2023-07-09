@@ -35,7 +35,7 @@ RDEPENDS:${PN} = "pip-astunparse \
 		  pip-fonttools \
 		  pip-torchvision \
 		  python3-hypothesis \
-		  pip-numpy \
+		  python3-numpy \
 		  python3-psutil \
 		  python3-pyyaml \
 		  python3-requests \

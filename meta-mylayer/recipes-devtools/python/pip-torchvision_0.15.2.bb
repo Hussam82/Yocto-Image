@@ -13,7 +13,7 @@ SRC_URI[md5sum] = "513171e835ee64bf210a028320e22eac"
 DEPENDS = "python3 python3-pip-native python3-wheel-native"
 
 RDEPENDS:${PN} = "${PYTHON_PN} \
-                  pip-numpy \
+                  python3-numpy \
                   ${PYTHON_PN}-pillow"
 
 

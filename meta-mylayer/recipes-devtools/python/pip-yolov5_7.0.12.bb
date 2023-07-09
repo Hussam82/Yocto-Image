@@ -23,7 +23,7 @@ RDEPENDS:${PN} = "${PYTHON_PN} \
                   pip-ultralytics \
                   pip-torch \
                   pip-huggingface-hub \
-                  pip-numpy \
+                  python3-numpy \
                   pip-torchvision"
                   
                  
