@@ -18,4 +18,4 @@ S = "${WORKDIR}"
 inherit cmake
 
 
-FILES_${PN} = "${bindir}"
+FILES_${PN} = "/etc/Models/*"

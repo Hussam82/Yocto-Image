@@ -6,7 +6,7 @@ DEPENDS:append = " qtbase"
 SRC_URI:append = " file://CarDashboard.service \
                    file://CarDashboard.env"
 SRC_URI:append = " git://github.com/Hussam82/CarDashboard;protocol=https;branch=master"
-SRCREV = "afc42e58e44d7c8414f5960e0ccfba45f7659443"
+SRCREV = "4b1de22c18a01d3178431dbccf455a59c2653121"
 
 S = "${WORKDIR}/git"
 

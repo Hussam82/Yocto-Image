@@ -14,7 +14,7 @@ DEPENDS = "python3 python3-pip-native python3-wheel-native"
 
 RDEPENDS:${PN} = "${PYTHON_PN} \
 	          ${PYTHON_PN}-scipy \
-                  ${PYTHON_PN}-numpy "
+                  pip-numpy "
 
 
 inherit python3native

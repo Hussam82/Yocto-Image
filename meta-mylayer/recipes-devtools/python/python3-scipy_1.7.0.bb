@@ -13,7 +13,7 @@ SRC_URI[md5sum] = "bbab95fed977823e90fcc9c03986f389"
 DEPENDS = "python3 python3-pip-native python3-wheel-native"
 
 RDEPENDS:${PN} = "${PYTHON_PN} \
-                  ${PYTHON_PN}-numpy \
+                  pip-numpy \
 "
 RPROVIDES:${PN} += "\
     libgfortran-daac5196.so.5.0.0(GFORTRAN_8)(64bit) \

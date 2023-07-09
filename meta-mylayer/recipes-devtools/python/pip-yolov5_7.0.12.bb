@@ -13,7 +13,6 @@ SRC_URI[md5sum] = "cc965558e2c0d929810a608272c466c6"
 DEPENDS = "python3 python3-pip-native python3-wheel-native"
 
 RDEPENDS:${PN} = "${PYTHON_PN} \
-                  ${PYTHON_PN}-numpy \
                   ${PYTHON_PN}-pillow \
                   ${PYTHON_PN}-matplotlib \
                   ${PYTHON_PN}-psutil \
@@ -23,6 +22,8 @@ RDEPENDS:${PN} = "${PYTHON_PN} \
                   ${PYTHON_PN}-tqdm \
                   pip-ultralytics \
                   pip-torch \
+                  pip-huggingface-hub \
+                  pip-numpy \
                   pip-torchvision"
                   
                  
@@ -42,6 +43,7 @@ do_install() {
     # Install pip package
     install -d ${D}/${PYTHON_SITEPACKAGES_DIR}
     cp -r ${S}/yolov5 ${D}/${PYTHON_SITEPACKAGES_DIR}
+    cp -r ${S}/yolov5/models ${D}/${PYTHON_SITEPACKAGES_DIR}
     cp -r ${S}/yolov5-7.0.12.dist-info ${D}/${PYTHON_SITEPACKAGES_DIR}
 
 }

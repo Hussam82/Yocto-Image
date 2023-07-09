@@ -1,12 +1,17 @@
-# The is automatic generated Code by "makePipRecipes.py"
-# (build by Robin Sebastian (https://github.com/robseb) (git@robseb.de) Vers.: 1.2) 
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2021 iris-GmbH infrared & intelligent sensors
 
-SUMMARY = "Recipe to embedded the Python PiP Package dlib"
-HOMEPAGE ="https://pypi.org/project/dlib"
-LICENSE = "MIT"
+SUMMARY = "A toolkit for making real world machine learning and data analysis applications"
+HOMEPAGE = "http://dlib.net"
+SECTION = "libs"
+
+LICENSE = "BSL-1.0"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=2c7a3fa82e66676005cd4ee2608fd7d2"
 
-inherit pypi setuptools3
-PYPI_PACKAGE = "dlib"
-SRC_URI[md5sum] = "eb06d94fb36fb3e9ca71f5f708014935"
-SRC_URI[sha256sum] = "2d4f618073bc6b297aa01ce05595a2d32b5b37e69cafd99f796e77346f6dcfb5"
+SRC_URI = "git://github.com/davisking/dlib.git;protocol=https;branch=master"
+SRCREV = "074ab8bdbadbee1afb95653c3ce46867ed32dfa1"
+S = "${WORKDIR}/git"
+
+inherit cmake setuptools3
+
+

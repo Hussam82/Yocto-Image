@@ -20,15 +20,15 @@ typedef unsigned short u16;
 
 static int dht11_major = 0;
 static int dht11_gpio = 4;
-static struct class *dht11_class;//类
-static struct device *dht11_dev;//设备
+static struct class *dht11_class;
+static struct device *dht11_dev;
 static const char* dht11_name = "dht11km";
 
 
 typedef struct	DHT11_SENSOR_DATA
 {
-	u16 temp;//温度
-	u16 hum;//湿度
+	u16 temp;
+	u16 hum;
 }dht11_data;
 
 #define DHT11_DQ_High    gpio_direction_output(dht11_gpio, 1)
@@ -45,30 +45,28 @@ static u8 DHT11_Read_DQ(void)
 	return gpio_get_value(dht11_gpio);
 }
 
-//复位DHT11
+
 static void DHT11_Rst(void)   
 {                 
 	DHT11_DQ_Low;
-	msleep (20);  //拉低至少18ms
-	DHT11_DQ_High; //DQ=1 
-	delay_us (30);  //主机拉高20~40us
+	msleep (20);  
+	DHT11_DQ_High; 
+	delay_us (30); 
 }
 
-//等待DHT11的回应
-//返回1:未检测到DHT11的存在
-//返回0:存在
+
 static u8 DHT11_Check(void)    
 {   
-	u8 retry=0;//定义临时变量
-	DHT11_IO_IN;//SET INPUT 
-	while ((DHT11_Read_DQ()==1)&&retry<100)//DHT11会拉低40~80us
+	u8 retry=0;
+	DHT11_IO_IN;
+	while ((DHT11_Read_DQ()==1)&&retry<100)
 	{
 		retry++;
 		delay_us(1);
 	}; 
 	if(retry>=100)return 1;
 	else retry=0;
-	while ((DHT11_Read_DQ()==0)&&retry<100)//DHT11拉低后会再次拉高40~80us
+	while ((DHT11_Read_DQ()==0)&&retry<100)
 	{
 		retry++;
 		delay_us(1);
@@ -77,30 +75,28 @@ static u8 DHT11_Check(void)
 	return 0;
 }
 
-//从DHT11读取一个位
-//返回值：1/0
+
 static u8 DHT11_Read_Bit(void)  
 {
 	u8 retry=0;
-	while((DHT11_Read_DQ()==1)&&retry<100)//等待变为低电平
+	while((DHT11_Read_DQ()==1)&&retry<100)
 	{
 		retry++;
 		delay_us(1);
 	}
 	retry=0;
-	while((DHT11_Read_DQ()==0)&&retry<100)//等待变高电平
+	while((DHT11_Read_DQ()==0)&&retry<100)
 	{
 		retry++;
 		delay_us(1);
 	}
-	delay_us(40);//等待40us
+	delay_us(40);
 	if(DHT11_Read_DQ()==1)
 	return 1;
 	else 
 	return 0;   
 }
-//从DHT11读取一个字节
-//返回值：读到的数据
+
 static u8 DHT11_Read_Byte(void)    
 {        
     u8 i,dat;
@@ -113,10 +109,7 @@ static u8 DHT11_Read_Byte(void)
 	return dat;
 }
  
-//从DHT11读取一次数据
-//temp:温度值(范围:0~50°)
-//humi:湿度值(范围:20%~90%)
-//返回值：0,正常;1,读取失败
+
 static u8 DHT11_Read_Data(u16 *temp,u16 *humi)    
 {        
 	u8 buf[5];
@@ -124,7 +117,7 @@ static u8 DHT11_Read_Data(u16 *temp,u16 *humi)
 	DHT11_Rst();
 	if(DHT11_Check()==0)
 	{
-		for(i=0;i<5;i++)//读取40位数据
+		for(i=0;i<5;i++)
 		{
 			buf[i]=DHT11_Read_Byte();
 		}
@@ -139,13 +132,11 @@ static u8 DHT11_Read_Data(u16 *temp,u16 *humi)
 	}else return 1;
 	return 0;    
 }
-//初始化DHT11的IO口 DQ 同时检测DHT11的存在
-//返回1:不存在
-//返回0:存在     
+  
 static void DHT11_Init(void)
 {     
-	DHT11_Rst();  //复位DHT11
-	DHT11_Check();//等待DHT11的回应
+	DHT11_Rst();
+	DHT11_Check();
 }
 
 int DHT11_open(struct inode *inode, struct file *flips)
@@ -214,7 +205,7 @@ MODULE_DEVICE_TABLE(of, of_dht11_match);
 static int __init dht11_init(void)
 {
 	int ret;  
-	enum of_gpio_flags flag;//(flag == OF_GPIO_ACTIVE_LOW) ?
+	enum of_gpio_flags flag;
 
 	printk("-------%s-------------\n", __FUNCTION__);
 	
@@ -236,7 +227,6 @@ static int __init dht11_init(void)
     }
 	else
 		printk("gpio %d request success!\n", dht11_gpio); 
-	//能够读到配置信息之后就可以开始创建设备节点
 	dht11_major = register_chrdev(0, "dht11km",&dht11_fops);
 	if(dht11_major <0)
 	{

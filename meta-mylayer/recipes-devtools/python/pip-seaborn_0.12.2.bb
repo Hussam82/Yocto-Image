@@ -13,7 +13,7 @@ SRC_URI[md5sum] = "e3d6ea484a1b494eb5bfe01f68ba41f5"
 DEPENDS = "python3 python3-pip-native python3-wheel-native"
 
 RDEPENDS:${PN} = "${PYTHON_PN} \
-                  ${PYTHON_PN}-numpy "
+                  pip-numpy "
 
 
 inherit python3native

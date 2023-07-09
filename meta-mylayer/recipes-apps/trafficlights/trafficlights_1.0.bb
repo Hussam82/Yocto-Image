@@ -10,13 +10,13 @@ S = "${WORKDIR}"
 
 
 do_install:append(){
-install -d ${D}${bindir}
-cp ${S}/trafficlights.py ${D}${bindir}
+install -d ${D}/etc/Models
+cp ${S}/trafficlights.py ${D}/etc/Models
 
 install -d ${D}/etc/TrafficLightsDetection
 cp -r ${S}/best_tl2.pt ${D}/etc/TrafficLightsDetection
 cp ${S}/videoplayback_6.mp4 ${D}/etc/TrafficLightsDetection
 
 }
-FILES:${PN}:append = " ${bindir}/*"
+FILES:${PN}:append = " /etc/Models/*"
 FILES:${PN}:append = " /etc/TrafficLightsDetection/*"
