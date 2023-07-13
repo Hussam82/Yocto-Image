@@ -27,6 +27,7 @@ addtask unpack_extra after do_unpack before do_patch
 
 RDEPENDS:${PN} = "pip-astunparse \
 		  pip-expecttest \
+		  pip-filelock \
 		  pip-types-dataclasses \
 		  pip-fsspec \
 		  pip-ultralytics \
