@@ -55,9 +55,9 @@ from utils.torch_utils import select_device, smart_inference_mode
 
 @smart_inference_mode()
 def run(
-        weights=MAINDIR / 'best_tl2.pt',  # model path or triton URL
-        source=MAINDIR / 'videoplayback_6.mp4',  # file/dir/URL/glob/screen/0(webcam)
-        data=ROOT / 'data/coco128.yaml',  # dataset.yaml path
+        weights='/etc/TrafficLightsDetection/best_tl2.pt',  # model path or triton URL
+        source='/etc/TrafficLightsDetection/videoplayback_6.mp4',  # file/dir/URL/glob/screen/0(webcam)
+        data='/usr/lib/python3.10/site-packages/yolov5/data/coco128.yaml',  # dataset.yaml path
         imgsz=(640, 640),  # inference size (height, width)
         conf_thres=0.4,  # confidence threshold
         iou_thres=0.45,  # NMS IOU threshold
@@ -73,7 +73,7 @@ def run(
         augment=False,  # augmented inference
         visualize=False,  # visualize features
         update=False,  # update all models
-        project=ROOT / 'runs/detect',  # save results to project/name
+        project='/usr/lib/python3.10/site-packages/yolov5/runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
         line_thickness=3,  # bounding box thickness (pixels)
@@ -216,9 +216,9 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--weights', nargs='+', type=str, default=MAINDIR / 'best_tl2.pt', help='model path or triton URL')
-    parser.add_argument('--source', type=str, default=MAINDIR / 'videoplayback_6.mp4', help='file/dir/URL/glob/screen/0(webcam)')
-    parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='(optional) dataset.yaml path')
+    parser.add_argument('--weights', nargs='+', type=str, default='/etc/TrafficLightsDetection/best_tl2.pt', help='model path or triton URL')
+    parser.add_argument('--source', type=str, default='/etc/TrafficLightsDetection/videoplayback_6.mp4', help='file/dir/URL/glob/screen/0(webcam)')
+    parser.add_argument('--data', type=str, default='/usr/lib/python3.10/site-packages/yolov5/data/coco128.yaml', help='(optional) dataset.yaml path')
     parser.add_argument('--imgsz', '--img', '--img-size', nargs='+', type=int, default=[640], help='inference size h,w')
     parser.add_argument('--conf-thres', type=float, default=0.4, help='confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.45, help='NMS IoU threshold')
@@ -250,12 +250,11 @@ def parse_opt():
 
 
 def main(opt):
-    check_requirements(ROOT / 'requirements.txt', exclude=('tensorboard', 'thop'))
+    check_requirements('/usr/lib/python3.10/site-packages/yolov5/requirements.txt', exclude=('tensorboard', 'thop'))
     run(**vars(opt))
 
 
 if __name__ == '__main__':
     opt = parse_opt()
     main(opt)
-
 
