@@ -17,7 +17,9 @@ Flash the resulting image to the target device
 Boot the device and log in using the credentials specified in the image configuration
 
 ## Demo
-![Watch the video](https://drive.google.com/file/d/11ztduhAdvdS94qrDeQF4aJ3HlVZTIkJh/view?usp=drive_link)
+A demo for the project working in action will be found on the next google drive link:
+
+https://drive.google.com/file/d/11ztduhAdvdS94qrDeQF4aJ3HlVZTIkJh/view?usp=drive_link
 
 
 
