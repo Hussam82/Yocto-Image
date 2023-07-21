@@ -25,4 +25,6 @@ Also, it was mentored by Eng. Moatassem ElSayed a Senior Embedded Linux Engineer
 
 ## References
 ADAS.API ↗: A RESTful API for accessing advanced driver assistance system (ADAS) data.
+GitHub Repo Link: https://github.com/NourAbdellatif/ADAS.API
 CarDashboard ↗: A Qt-based dashboard for displaying ADAS data and other vehicle information.
+GitHub Repo Link: https://github.com/Hussam82/CarDashboard
