@@ -24,7 +24,6 @@ This project was inspired and influenced by the work of the Yocto Project commun
 Also, it was mentored by Eng. Moatassem ElSayed a Senior Embedded Linux Engineer at Valeo
 
 ## References
-ADAS.API ↗: A RESTful API for accessing advanced driver assistance system (ADAS) data.
-GitHub Repo Link: https://github.com/NourAbdellatif/ADAS.API
+ADAS.API ↗: A RESTful API for accessing advanced driver assistance system (ADAS) data and its GitHub Repo Link: https://github.com/NourAbdellatif/ADAS.API
 CarDashboard ↗: A Qt-based dashboard for displaying ADAS data and other vehicle information.
 GitHub Repo Link: https://github.com/Hussam82/CarDashboard
