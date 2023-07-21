@@ -1,4 +1,4 @@
-# Yocto-Image
+                                                                      # Yocto-Image
 This repository contains code and instructions for building a custom Linux distribution using Yocto Project. The resulting image can be used on embedded devices such as Raspberry Pi, BeagleBoard, and others.
 
 ## Features
