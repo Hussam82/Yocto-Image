@@ -22,7 +22,6 @@ A demo for the project working in action will be found on the next google drive 
 https://drive.google.com/file/d/11ztduhAdvdS94qrDeQF4aJ3HlVZTIkJh/view?usp=drive_link
 
 
-
 ## Limitations
 Requires some familiarity with the Yocto Project and Linux system administration
 Builds can take a long time on slower hardware
@@ -30,6 +29,27 @@ Device compatibility may vary depending on the selected options and configuratio
 ## Acknowledgments
 This project was inspired and influenced by the work of the Yocto Project community and developers.
 Also, it was mentored by Eng. Moatassem ElSayed a Senior Embedded Linux Engineer at Valeo
+
+## Contributors
+This project was a the graduation project of a group of 5 from Faculty of Engineering, EECE department, Cairo University.
+
+My teammates are:
+
+Ahmed Osama Abdulmaksoud
+
+LinkedIn Link: https://www.linkedin.com/in/ahmed-osama-73a37820a/
+
+Abdulrahman Yousry
+
+LinkedIn Link: https://www.linkedin.com/in/abdelrahman-yousry-323baa194/
+
+Abdulrahman Farid
+
+LinkedIn Link: https://www.linkedin.com/in/abdelrahman-farid-218708217/
+
+Nour Abdelatif
+
+LinkedIn Link: https://www.linkedin.com/in/nourabdellatif/
 
 ## References
 ADAS.API ↗: A RESTful API for accessing advanced driver assistance system (ADAS) data and its GitHub Repo Link: https://github.com/NourAbdellatif/ADAS.API
