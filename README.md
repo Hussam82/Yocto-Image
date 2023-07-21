@@ -31,7 +31,7 @@ This project was inspired and influenced by the work of the Yocto Project commun
 Also, it was mentored by Eng. Moatassem ElSayed a Senior Embedded Linux Engineer at Valeo
 
 ## Contributors
-This project was a the graduation project of a group of 5 from Faculty of Engineering, EECE department, Cairo University.
+This project was the graduation project of a group of 5 from Faculty of Engineering, EECE department, Cairo University.
 
 My teammates are:
 
