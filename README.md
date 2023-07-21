@@ -17,7 +17,9 @@ Flash the resulting image to the target device
 Boot the device and log in using the credentials specified in the image configuration
 
 ## Demo
-![Alt text](https://drive.google.com/file/d/11ztduhAdvdS94qrDeQF4aJ3HlVZTIkJh/view?usp=drive_link)
+[![Watch the video](https://drive.google.com/file/d/11ztduhAdvdS94qrDeQF4aJ3HlVZTIkJh/view?usp=drive_link)
+
+
 
 ## Limitations
 Requires some familiarity with the Yocto Project and Linux system administration
